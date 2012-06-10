@@ -7,29 +7,29 @@
 <!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <!-- the "no-js" class is for Modernizr. -->
 
-<head id="www-sitename-com" data-template-set="html5-reset">
+<head id="martinmoen-com" data-template-set="html5-reset">
 
 	<meta charset="utf-8">
 	
 	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title></title>
+	<title>Martin Eskdale Moen</title>
 	
-	<meta name="title" content="">
-	<meta name="description" content="">
+	<meta name="title" content="Martin Eskdale Moen">
+	<meta name="description" content="Martin Eskdale Moen, Embedded Systems Engineer, Drupal consultant and all around web">
 	<!-- Google will often use this as its description of your page/site. Make it good. -->
 	
 	<meta name="google-site-verification" content="">
 	<!-- Speaking of Google, don't forget to set your site up: http://google.com/webmasters -->
 	
-	<meta name="author" content="Your Name Here">
-	<meta name="Copyright" content="Copyright Your Name Here 2011. All Rights Reserved.">
+	<meta name="author" content="Martin Eskdale Moen">
+	<meta name="Copyright" content="Copyright Martin Eskdale Moen 2012. All Rights Reserved.">
 
 	<!-- Dublin Core Metadata : http://dublincore.org/ -->
-	<meta name="DC.title" content="Project Name">
-	<meta name="DC.subject" content="What you're about.">
-	<meta name="DC.creator" content="Who made this site.">
+	<meta name="DC.title" content="Martin Eskdale Moen">
+	<meta name="DC.subject" content="Drupal, Embedded Systems, JavaScript, NodeJS">
+	<meta name="DC.creator" content="Martin Eskdale Moen">
 	
 	<!--  Mobile Viewport Fix
 	j.mp/mobileviewport & davidbcalhoun.com/2010/viewport-metatag 
@@ -57,7 +57,6 @@
 	<link rel="stylesheet" href="_/css/style.css">
 	
 	<!-- all our JS is at the bottom of the page, except for Modernizr. -->
-	<script src="_/js/modernizr-1.7.min.js"></script>
 
 </head>
 
@@ -66,43 +65,19 @@
 <div class="wrapper"><!-- not needed? up to you: http://camendesign.com/code/developpeurs_sans_frontieres -->
 
 	<header>
-		
-		<h1><a href="/">Page Title</a></h1>
-		
-		<nav>
-		
-			<ol>
-				<li><a href="">Nav Link 1</a></li>
-				<li><a href="">Nav Link 2</a></li>
-				<li><a href="">Nav Link 3</a></li>
-			</ol>
-		
-		</nav>
-	
 	</header>
-	
-	<article>
-		
-		<h1>Article Header</h1>
-		
-		<p>Etiam pretium odio eu mi convallis vitae varius neque pharetra. Nulla vestibulum nisi ut sem cursus sed mattis nisi egestas.</p>
-		
-		<h2>Article Subhead</h2>
-		
-		<p>Vestibulum lacus erat, volutpat vel dignissim at, fringilla ut felis.</p>
-	
-	</article>
-	
-	<aside>
-	
-		<h2>Sidebar Content</h2>
-	
-	</aside>
-	
+
+  <section id="main">
+  </section>
+
+  <nav>
+    <ol>
+      <li data-type="md-items" data-source="articles.ls">my view</li>
+      <li data-type="html-page" data-source="test.html">test</li>
+    </ol>
+  </nav>
 	<footer>
-		
-		<p><small>&copy; Copyright Your Name Here 2011. All Rights Reserved.</small></p>
-		
+ 		<p><small>&copy; Copyright Martin Eskdale Moen 2012. All Rights Reserved.</small></p>
 	</footer>
 
 </div>
@@ -110,12 +85,12 @@
 <!-- here comes the javascript -->
 
 <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script>window.jQuery || document.write("<script src='_/js/jquery-1.7.2.min.js'>\x3C/script>")</script>
 
 <!-- this is where we put our custom functions -->
-<script src="_/js/functions.js"></script>
-
+<script src="_/js/showdown.js"></script>
+<script src="_/js/ls.js"></script>
 <!-- Asynchronous google analytics; this is the official snippet.
 	 Replace UA-XXXXXX-XX with your site's ID and uncomment to enable.
 	 

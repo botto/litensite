@@ -12,61 +12,41 @@
 
 /* optional triggers
 
-$(window).load(function() {
-	
-});
+   $(window).load(function() {
 
-$(window).resize(function() {
-	
-});
+   });
+
+   $(window).resize(function() {
+
+   });
 
 */
 
 $(document).ready(function() {
   var conv = new Showdown.converter();
-  var page_list_file = "pages.ls";
+  var article_list_file = "/articles.ls";
 
   $(function() {
-   $.ajax({
-      url: page_list_file,
-      type: "text"
-  }).done(function(data) {
-    $.each(data.split('\n'), function() {
-      if (this.length > 0) {
-        var page_link_ele = $(document.createElement("a"));
-        var page_link_ele_wrapper = $(document.createElement("li"));
-        var page_link = this.toString();
-        $(page_link_ele).html(this.toString());
-        $(page_link_ele).attr("class", "page");
-        $(page_link_ele).attr("id", page_link);
-        $(page_link_ele).attr("href", "#"+page_link);
-        $(page_link_ele).on("click", null, function() {
+    $.ajax({
+      url: article_list_file,
+      dataType: "text",
+    }).done(function(data) {
+      var articles_container = $(document.createElement("section"));
+      
+      $.each(data.split('\n'), function() {
+        if (this.length > 0) {
           $.ajax({
-            url: ["page/",page_link].join('')
-          }).done(function(txt) {
-            $("#content").html(conv.makeHtml(txt));
+            url: ["articles/", this.toString(), ".md"].join(''),
+            dataType: "text"
+          }).done(function(d){
+            var article = $(document.createElement("article"));
+            article.html(conv.makeHtml(d));
+            articles_container.append(article);
           });
-        });
-        $(page_link_ele_wrapper).append(page_link_ele);
-        $("#right-nav").append(page_link_ele_wrapper);
-      }
-    });
-  });
-  
-  });
-
-  $(function() {
-    $(".nav a").each(function(i, ele) {
-      var item = $(ele);
-      item.on("click", null ,function () {
-        $.ajax({
-          url: [item.attr("class"),"/",item.attr("id")].join(''),
-          type: "text"
-        }).done(function(txt) {
-          $("#content").html(conv.makeHtml(txt));
-        });
+        }
       });
-    });
+      $("#main").append(articles_container);
+    })
   });
 
 });
