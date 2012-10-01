@@ -24,17 +24,17 @@
 
 var html_page = function(target, source) {
   $(function() {
-      var s = $(source);
-      var loc = s.attr('data-loc') || '.';
-      console.log([loc, "/", s.attr('data-source')].join(''));
-      $.ajax({
-url: [loc, "/", s.attr('data-source')].join(''),
-dataType: "html",
-cache: false
-}).done(function(d) {
-  $(target).html(d);
+    var s = $(source);
+    var loc = s.attr('data-loc') || '.';
+    console.log([loc, "/", s.attr('data-source')].join(''));
+    $.ajax({
+      url: [loc, "/", s.attr('data-source')].join(''),
+      dataType: "html",
+      cache: false
+    }).done(function(d) {
+      $(target).html(d);
+    });
   });
-      });
 };
 
 var md_items = function(target, mditems_loc, mditems_list) {
@@ -79,19 +79,21 @@ var get_mditems = function(list_file) {
 
 
 $(document).ready(function() {
-  $('nav ol li a').each(function(i, e) {
+  var nav_links = $('nav ol li a');
+  nav_links.each(function(i, e) {
     var element = $(e);
-    switch(element.attr('data-type')) {
-      case "md_items":
-        element.click(function() {
+    element.click(function() {
+      nav_links.removeClass('active');
+      element.addClass('active');
+      switch(element.attr('data-type')) {
+        case "md_items":
           md_items($("#main"), element.attr('data-loc'), get_mditems(element.attr('data-source')));
-        });
-      break;
-      case "html_page":
-        element.click(function() {
+        break;
+        case "html_page":
           html_page("#main", element);
-        });
-      break;
-    }
+        break;
+      }
+    });
   });
+  nav_links.first().click();
 });

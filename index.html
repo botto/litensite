@@ -41,23 +41,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	-->
 
-	<link rel="shortcut icon" href="_/img/favicon.ico">
+	<link rel="shortcut icon" href="/_/img/favicon.ico">
 	<!-- This is the traditional favicon.
 		 - size: 16x16 or 32x32
 		 - transparency is OK
 		 - see wikipedia for info on browser support: http://mky.be/favicon/ -->
 		 
-	<link rel="apple-touch-icon" href="_/img/apple-touch-icon.png">
+	<link rel="apple-touch-icon" href="/_/img/apple-touch-icon.png">
 	<!-- The is the icon for iOS's Web Clip.
 		 - size: 57x57 for older iPhones, 72x72 for iPads, 114x114 for iPhone4's retina display (IMHO, just go ahead and use the biggest one)
 		 - To prevent iOS from applying its styles to the icon name it thusly: apple-touch-icon-precomposed.png
 		 - Transparency is not recommended (iOS will put a black BG behind the icon) -->
 	
 	<!-- CSS: screen, mobile & print are all in the same file -->
-  <link rel="stylesheet" href="_/css/base.css">
-  <link rel="stylesheet" href="_/css/style.css">
-	
-	<!-- all our JS is at the bottom of the page, except for Modernizr. -->
+  <link href='http://fonts.googleapis.com/css?family=Geostar|Geostar+Fill|Black+Ops+One' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/_/css/base.css">
+  <link rel="stylesheet/less" type="text/css" href="/_/css/style.less">
+  <script src="_/js/less-1.3.0.min.js" type="text/javascript"></script>
 
 </head>
 
@@ -66,21 +66,24 @@
 <div class="wrapper yui3-u"><!-- not needed? up to you: http://camendesign.com/code/developpeurs_sans_frontieres -->
 
 	<header>
+    <nav>
+      <ol>
+        <li><a href="#" data-type="html_page" data-source="test.html" data-loc=".">projects</a></li>
+        <li><a href="#" data-type="md_items" data-source="articles.ls" data-loc="articles">thoughts</a></li>
+      </ol>
+    </nav>
 	</header>
+  
+  
+  <div id="main-wrapper">
+    <section id="main">
+      <p>hi, you are seeing this message because you don't have javascript switched on. I'm sorry but the site does require JavaScript in order to function</p>
+    </section>
 
-  <section id="main">
-  </section>
-
-  <nav>
-    <ol>
-      <li><a href="#" data-type="html_page" data-source="test.html" data-loc=".">Bla</a></li>
-      <li><a href="#" data-type="md_items" data-source="articles.ls" data-loc="articles">view</a></li>
-    </ol>
-  </nav>
 	<footer>
- 		<p><small>&copy; Copyright Martin Eskdale Moen 2012. All Rights Reserved.</small></p>
+ 		<p><small>&copy; copyright martin mskdale moen 2012. all rights reserved.</small></p>
 	</footer>
-
+  </div>
 </div>
 
 <!-- here comes the javascript -->
