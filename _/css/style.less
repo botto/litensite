@@ -1,3 +1,4 @@
+@import "elements.less";
 @header_height: 250px;
 @nav_height: 70px;
 
@@ -14,7 +15,7 @@ header {
   height: @header_height;
   position: relative;
   display: block;
-  background: url('/images/1.jpg') no-repeat;
+  background: url('/_/images/1.jpg') no-repeat;
 }
 
 nav {
@@ -48,6 +49,7 @@ nav {
     color: #fff;
     text-decoration: none;
     font-size: 1em;
+    min-width: 100px;
   }
 
   a:hover, a.active {
