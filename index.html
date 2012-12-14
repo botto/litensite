@@ -7,7 +7,7 @@
 <!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <!-- the "no-js" class is for Modernizr. -->
 
-<head id="www-sitename-com" data-template-set="html5-reset">
+<head id="" data-template-set="html5-reset">
 
 	<meta charset="utf-8">
 	
@@ -23,13 +23,13 @@
 	<meta name="google-site-verification" content="">
 	<!-- Speaking of Google, don't forget to set your site up: http://google.com/webmasters -->
 	
-	<meta name="author" content="Your Name Here">
-	<meta name="Copyright" content="Copyright Your Name Here 20xx. All Rights Reserved.">
+	<meta name="author" content="">
+	<meta name="Copyright" content="">
 
 	<!-- Dublin Core Metadata : http://dublincore.org/ -->
-	<meta name="DC.title" content="Project Name">
-	<meta name="DC.subject" content="What you're about.">
-	<meta name="DC.creator" content="Who made this site.">
+	<meta name="DC.title" content="">
+	<meta name="DC.subject" content="">
+	<meta name="DC.creator" content="">
 	
 	<!--  Mobile Viewport Fix
 	j.mp/mobileviewport & davidbcalhoun.com/2010/viewport-metatag 
@@ -37,82 +37,63 @@
 	initial-scale = 1.0 retains dimensions instead of zooming out if page height > device height
 	maximum-scale = 1.0 retains dimensions instead of zooming in if page width < device width
 	-->
-	<!-- Uncomment to use; use thoughtfully!
+	<!-- Uncomment to use; use thoughtfully! -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-	-->
 
-	<link rel="shortcut icon" href="_/img/favicon.ico">
+	<link rel="shortcut icon" href="/_/img/favicon.ico">
 	<!-- This is the traditional favicon.
 		 - size: 16x16 or 32x32
 		 - transparency is OK
 		 - see wikipedia for info on browser support: http://mky.be/favicon/ -->
 		 
-	<link rel="apple-touch-icon" href="_/img/apple-touch-icon.png">
+	<link rel="apple-touch-icon" href="/_/img/apple-touch-icon.png">
 	<!-- The is the icon for iOS's Web Clip.
 		 - size: 57x57 for older iPhones, 72x72 for iPads, 114x114 for iPhone4's retina display (IMHO, just go ahead and use the biggest one)
 		 - To prevent iOS from applying its styles to the icon name it thusly: apple-touch-icon-precomposed.png
 		 - Transparency is not recommended (iOS will put a black BG behind the icon) -->
 	
 	<!-- CSS: screen, mobile & print are all in the same file -->
-	<link rel="stylesheet" href="_/css/style.css">
+  <!-- <link href='http://fonts.googleapis.com/css?family=Geostar|Geostar+Fill|Black+Ops+One' rel='stylesheet' type='text/css'> -->
+  <link rel="stylesheet" href="/_/css/base.css">
+  <link rel="stylesheet/less" type="text/css" href="/_/css/style.less">
+  <script src="_/js/less-1.3.0.min.js" type="text/javascript"></script>
 
 </head>
 
 <body>
 
-<div class="wrapper"><!-- not needed? up to you: http://camendesign.com/code/developpeurs_sans_frontieres -->
+<div class="wrapper yui3-u"><!-- not needed? up to you: http://camendesign.com/code/developpeurs_sans_frontieres -->
 
 	<header>
-		
-		<h1><a href="/">Page Title</a></h1>
-		
-		<nav>
-		
-			<ol>
-				<li><a href="">Nav Link 1</a></li>
-				<li><a href="">Nav Link 2</a></li>
-				<li><a href="">Nav Link 3</a></li>
-			</ol>
-		
-		</nav>
-	
+    <nav>
+      <ol>
+        <li><a href="#" data-type="md_item" data-source="pages/example.md" data-target='#main'>example</a></li>
+        <li><a href="#" data-type="md_items" data-source="pages/more_examples.ls" data-target='#main'>more examples</a></li>
+      </ol>
+    </nav>
 	</header>
-	
-	<article>
-		
-		<h1>Article Header</h1>
-		
-		<p>Etiam pretium odio eu mi convallis vitae varius neque pharetra. Nulla vestibulum nisi ut sem cursus sed mattis nisi egestas.</p>
-		
-		<h2>Article Subhead</h2>
-		
-		<p>Vestibulum lacus erat, volutpat vel dignissim at, fringilla ut felis.</p>
-	
-	</article>
-	
-	<aside>
-	
-		<h2>Sidebar Content</h2>
-	
-	</aside>
-	
-	<footer>
-		
-		<p><small>&copy; Copyright Your Name Here 2011. All Rights Reserved.</small></p>
-		
-	</footer>
+  
+  
+  <div id="main-wrapper">
+    <section id="main">
+      <noscript><p>hi, you are seeing this message because you don't have javascript switched on. I'm sorry but the site does require JavaScript in order to function</p></noscript>
+    </section>
 
+	<footer>
+	</footer>
+  </div>
 </div>
 
 <!-- here comes the javascript -->
 
 <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script>window.jQuery || document.write("<script src='_/js/jquery-1.8.2.min.js'>\x3C/script>")</script>
+<!-- <script src="http://code.jquery.com/jquery-1.7.2.js"></script> -->
+<!-- <script>window.jQuery || document.write("<script src='_/js/jquery-1.7.2.min.js'>\x3C/script>")</script> -->
 
+<script src="_/js/jquery-1.8.2.min.js"></script>
 <!-- this is where we put our custom functions -->
+<script src="_/js/showdown.js"></script>
 <script src="_/js/ls.js"></script>
-
 <!-- Asynchronous google analytics; this is the official snippet.
 	 Replace UA-XXXXXX-XX with your site's ID and uncomment to enable.
 	 
