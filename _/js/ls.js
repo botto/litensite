@@ -29,16 +29,24 @@
       'md_items': function(attr) {
         $.ajax(attr['source'])
           .done(function(mdmani) {
-            //Reuild the location of the index file, but only if ajax was sucesfull
+            //Remove everything in the target
+            $(attr['target']).html('');
+
+            //Reuild the location of the index file
             var md_files_loc = attr['source'].split('/');
             md_files_loc.pop();
             md_files_loc = md_files_loc.join(' ');
+
+            //Loop through each entry
+            //@todo: more generic itterator so we can use custom theme functions
             $.each(mdmani.split('\n'), function (i, e) {
               if (e.length > 0) {
+                var article = document.createElement('article');
                 handler('md_item')({
                   'source': [md_files_loc, '/', e, '.md'].join(''),
-                  'target': attr['target']
+                  'target': article,
                 });
+                $(attr['target']).append(article);
               }
             });
           });
