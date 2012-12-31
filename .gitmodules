@@ -1,0 +1,6 @@
+[submodule "_/css/github-form-ribbon-css"]
+	path = _/css/github-form-ribbon-css
+	url = git://github.com/simonwhitaker/github-fork-ribbon-css.git
+[submodule "_/css/960"]
+	path = _/css/960
+	url = git://github.com/nathansmith/960-Grid-System.git

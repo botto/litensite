@@ -3,59 +3,51 @@
 @nav_height: 70px;
 
 body {
-  font-size: 14px;
+  font-size: 15px;
+  background-color: #fafaf2;
+}
+
+a , a:hover, a:visited {
+  text-decoration: none;
+  color: #000;
 }
 
 #main {
-  min-height: 200px;
-  margin: 25px;
+}
+
+#wrapper {
+  margin-left: 0;
 }
 
 header {
-  height: @header_height;
-  position: relative;
-  display: block;
-  background: url('/_/images/1.jpg') no-repeat;
+  margin-bottom: 1em;
+  h1 {
+    font-size: 23px;
+    border-bottom: 1px solid #aaa;
+  }
+
+  h2 {
+    margin-left: 20px;
+  }
 }
 
 nav {
-  font-family: 'Geostar Fill', cursive;
-  display: block;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background-color: rgba(100,100,100,0.5);
-
+  font-family: andika, arial;
+  font-size: 2em;
+  
   ol {
-    display: block;
-  //  position: relative;
-  //  top: (@nav_height - 20px) / 2;
+    float: right;
   }
-
+  
   li {
+    width: 150px;
+    text-align: left;
     list-style: none;
-    display: inline-block;
-    margin-left: 25px;
-    margin-right: 5px;
-    border-left: #000 1px solid;
+    &.active {
+      border-right: 5px solid #323232;
+    }
   }
 
-  a {
-    display: inline-block;
-    padding-top: (@nav_height - 20px) / 2;
-    padding-bottom: (@nav_height - 20px) / 2;
-    padding-left: 5px;
-    padding-right: 5px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 1em;
-    min-width: 100px;
-  }
-
-  a:hover, a.active {
-    color: #299;
-    background-color: #fff;
-  }
 }
 
 footer {
@@ -69,7 +61,6 @@ footer {
     padding-bottom: 10px;
   }
 }
-
 
 p {
   margin-top: 1em;
