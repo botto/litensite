@@ -59,17 +59,36 @@
       return (handlers[id] ? handlers[id] : false);
     }
   });
-  
+
   $(function() {
+    
     $.each(handler(), function(i,e) {
-      $(['[data-type="',i,'"]'].join('')).click(function() {
+      //Select the link item on the page
+      a = $(['a[data-type="',i,'"]'].join(''));
+
+      //Set the href so we can share this link easier
+      //We will always be pointing to #main when using a link
+      a.attr('href', ['#', a.attr('data-type'), ',', a.attr('data-source')].join(''))
+
+      //Assign the click action
+      a.click(function() {
         var e = $(this);
+        $('nav li').removeClass('active');
+        e.parent('li').addClass('active');
         handler(i)({
           'target': e.attr('data-target'),
           'source': e.attr('data-source') 
         });
       });
     });
-    $('nav ol li a').first().click();
+
+    //Not most optimal method to get the URI for a page
+    //A better approach to this will be needed
+    if (typeof location === 'object' && typeof location.hash === 'string' && location.hash.length > 1) {  
+      $(['a[href="', location.hash, '"]'].join('')).click();
+    }
+    else {
+      $('nav ol li a').first().click();
+    }
   });
 })(window.jQuery);
