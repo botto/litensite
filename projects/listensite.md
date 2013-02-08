@@ -1,6 +1,6 @@
 #lITENsITE  
-This is a simple client side based content display system.  
-I got the idea after becoming exhausted with server side software. I wanted a simple and easy to use system that did not require a whole database backend and a frontend that could be taken down by too many requests.  
+client side based content display system.  
+I got the idea after becoming exhausted with server side software. For I wanted a simple and easy to use system that did not require a whole database backend and a frontend that could be taken down by too many requests.  
 A few criteria were:
   * Low to no maintenance
   * Easy to update from any device
