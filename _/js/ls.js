@@ -3,11 +3,24 @@
     var formatting_engines = {};
     var formatters = {
       'md_item': function (markdown) {
-        //Check if we have instantiated the themeing engine before
+        //Check if we have instantiated the showdown engine before
         if (typeof formatting_engines['markdown'] != 'function') {
           formatting_engines['markdown'] = new Showdown.converter();
         }
         return formatting_engines['markdown'].makeHtml(markdown);
+      },
+      'link': function (href, t) {
+        var link = $(document.createElement('a'));
+        link.append(document.createTextNode(t));
+        link.attr({
+          href: href,
+        });
+        return link.get()[0].outerHTML;
+      },
+      'paragraph': function (t) {
+        var p = $(document.createElement('p'));
+        p.append(document.createTextNode(t));
+        return p.get()[0].outerHTML;
       },
     }
     if (typeof id == 'undefined' || id.length <= 0) {
@@ -22,35 +35,49 @@
     var handlers = {
       'md_item': function(attr) {
         $.ajax(attr['source'])
-          .done(function(md) {
-            $(attr['target']).html(theme('md_item')(md));
-          });
+        .done(function(md) {
+          $(attr['target']).html(theme('md_item')(md));
+        });
       },
       'md_items': function(attr) {
         $.ajax(attr['source'])
-          .done(function(mdmani) {
-            //Remove everything in the target
-            $(attr['target']).html('');
-
-            //Reuild the location of the index file
+          .done(function(files_list) {
+            //Rebuild the location of the index file
+            //Currently the list file and the markdown file have to be in the same dir
             var md_files_loc = attr['source'].split('/');
             md_files_loc.pop();
             md_files_loc = md_files_loc.join(' ');
 
             //Loop through each entry
             //@todo: more generic itterator so we can use custom theme functions
-            $.each(mdmani.split('\n'), function (i, e) {
-              if (e.length > 0) {
-                var article = document.createElement('article');
-                handler('md_item')({
-                  'source': [md_files_loc, '/', e, '.md'].join(''),
-                  'target': article,
-                });
-                $(attr['target']).append(article);
+
+            //First create the main container here so we can add the link and text
+            // later
+
+            var container;
+            var entries = files_list.split('\n');
+            for (var i=0; i<entries.length; i++) {
+              if (entries[i].length > 0) {
+                if (entries[i].charAt(0) == '%') {
+                  if (typeof container == 'object') {
+                    $(attr['target']).append(container);
+                  }
+                  container = $(document.createElement('div'));
+                  var md_entry = entries[i].split('|');
+                  container.append(theme('link')(md_entry[0].substring(1), md_entry[1]));
+                  /*handler('md_item')({
+                    'source': [md_files_loc, '/', e.substring(1), '.md'].join(''),
+                    'target': article,
+                  });*/
+                }
+                else {
+                  container.append(theme('paragraph')(entries[i]));
+                }
               }
-            });
+            }
+            $(attr['target']).append(container);
           });
-      }
+      },
     }
     if (typeof(id) == 'undefined' || id.length <= 0) {
       return handlers;
@@ -73,6 +100,7 @@
       //Assign the click action
       a.click(function() {
         var e = $(this);
+        $(e.attr('data-target')).html(' ');
         $('nav li').removeClass('active');
         e.parent('li').addClass('active');
         handler(i)({
