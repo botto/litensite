@@ -1,4 +1,5 @@
 (function($) {
+  var currentClasses = {};
   var theme = (function(id) {
     var formatting_engines = {};
     var formatters = {
@@ -34,6 +35,7 @@
   var handler = (function(id) {
     var handlers = {
       'md_item': function(attr) {
+        lsClassHandler(attr['target'], ['md-item-',attr['source']].join(''));
         $.ajax(attr['source'])
         .done(function(md) {
           $(attr['target']).html(theme('md_item')(md));
@@ -47,7 +49,7 @@
             var md_files_loc = attr['source'].split('/');
             md_files_loc.pop();
             md_files_loc = md_files_loc.join(' ');
-
+            lsClassHandler('#main', ['md-items-', md_files_loc].join(''));
             //Loop through each entry
             //@todo: more generic itterator so we can use custom theme functions
 
@@ -59,7 +61,7 @@
             for (var i=0; i<entries.length; i++) {
               if (entries[i].length > 0) {
                 if (entries[i].charAt(0) == '%') {
-                  if (typeof container == 'object') {
+                  if (container && typeof container == 'object') {
                     $(attr['target']).append(container);
                   }
                   container = $(document.createElement('div'));
@@ -85,6 +87,21 @@
     else {
       return (handlers[id] ? handlers[id] : false);
     }
+  });
+
+  var lsClassHandler = (function(e, c) {
+    c = c.replace(/\W/g, '-');
+    if (currentClasses[e] && typeof currentClasses[e] === 'object' && currentClasses[e].length > 0) {
+      for (var i=0; i<currentClasses[e].length; i++) {
+        $(e).removeClass(currentClasses[e][i]);
+      }
+      currentClasses[e] = [];
+    }
+    else {
+      currentClasses[e] = [];
+    }
+    $(e).addClass(c);
+    currentClasses[e].push(c);
   });
 
   $(function() {
