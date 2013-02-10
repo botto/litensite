@@ -50,11 +50,6 @@
             md_files_loc.pop();
             md_files_loc = md_files_loc.join(' ');
             lsClassHandler('#main', ['md-items-', md_files_loc].join(''));
-            //Loop through each entry
-            //@todo: more generic itterator so we can use custom theme functions
-
-            //First create the main container here so we can add the link and text
-            // later
 
             var container;
             var entries = files_list.split('\n');
@@ -67,10 +62,6 @@
                   container = $(document.createElement('div'));
                   var md_entry = entries[i].split('|');
                   container.append(theme('link')(md_entry[0].substring(1), md_entry[1]));
-                  /*handler('md_item')({
-                    'source': [md_files_loc, '/', e.substring(1), '.md'].join(''),
-                    'target': article,
-                  });*/
                 }
                 else {
                   container.append(theme('paragraph')(entries[i]));
