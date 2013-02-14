@@ -10,13 +10,16 @@
         }
         return formatting_engines['markdown'].makeHtml(markdown);
       },
-      'link': function (href, t) {
-        var link = $(document.createElement('a'));
-        link.append(document.createTextNode(t));
-        link.attr({
-          href: href,
+      'link': function (vars) {
+        var a = $(document.createElement('a'));
+        a.append(document.createTextNode(vars['text']));
+        //a.attr('href', vars['source']);
+        a.attr('href', [vars['target'],',',vars['stype'], ',', vars['source']].join(''))
+        a.click(function() {
+          handler(vars['stype'])(vars);
         });
-        return link.get()[0].outerHTML;
+
+        return a;
       },
       'paragraph': function (t) {
         var p = $(document.createElement('p'));
@@ -61,7 +64,12 @@
                   }
                   container = $(document.createElement('div'));
                   var md_entry = entries[i].split('|');
-                  container.append(theme('link')(md_entry[0].substring(1), md_entry[1]));
+                  container.append(theme('link')({
+                    'target': '#main',
+                    'stype': 'md_item',
+                    'source': [md_files_loc,'/',md_entry[0].substring(1)].join(''),
+                    'text': md_entry[1]}
+                  ));
                 }
                 else {
                   container.append(theme('paragraph')(entries[i]));
@@ -103,7 +111,7 @@
 
       //Set the href so we can share this link easier
       //We will always be pointing to #main when using a link
-      a.attr('href', ['#', a.attr('data-type'), ',', a.attr('data-source')].join(''))
+      a.attr('href', [a.attr('data-target'),',',a.attr('data-type'), ',', a.attr('data-source')].join(''))
 
       //Assign the click action
       a.click(function() {
@@ -120,8 +128,12 @@
 
     //Not most optimal method to get the URI for a page
     //A better approach to this will be needed
-    if (typeof location === 'object' && typeof location.hash === 'string' && location.hash.length > 1) {  
-      $(['a[href="', location.hash, '"]'].join('')).click();
+    if (location && typeof location === 'object' && typeof location.hash === 'string' && location.hash.length > 1) {  
+      var d = location.hash.split(',');
+      handler(d[1])({
+        'target': d[0], 
+        'source': d[2]
+      });
     }
     else {
       $('nav ol li a').first().click();
