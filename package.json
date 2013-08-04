@@ -1,0 +1,27 @@
+{
+  "name": "litensite",
+  "version": "2.0.1",
+  "description": "## Summary:",
+  "main": "duster.js",
+  "dependencies": {
+    "dustjs-linkedin": "~2.0.1",
+    "watch": "~0.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/botto/litensite.git"
+  },
+  "keywords": [
+    "markdown",
+    "minimal"
+  ],
+  "author": "Martin Eskdale Moen",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/botto/litensite/issues"
+  }
+}
