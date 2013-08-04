@@ -1,0 +1,7 @@
+<nav>
+  <ul>
+    {#nav_items}
+      <li><a href={href}>{title}</a></li>
+    {/nav_items}
+  </ul>
+</nav>

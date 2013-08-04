@@ -1,0 +1,1 @@
+(function(){dust.register("Article",body_0);function body_0(chk,ctx){return chk.write("<article>{").reference(ctx.get("content"),ctx,"h").write("}</article>");}return body_0;})();

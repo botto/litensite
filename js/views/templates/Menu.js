@@ -1,0 +1,1 @@
+(function(){dust.register("Menu",body_0);function body_0(chk,ctx){return chk.write("<nav><ul>").section(ctx.get("menu_items"),ctx,{"block":body_1},null).write("</ul></nav>");}function body_1(chk,ctx){return chk.write("<li><a href=").reference(ctx.get("href"),ctx,"h").write(">").reference(ctx.get("title"),ctx,"h").write("</a></li>");}return body_0;})();
